@@ -2,7 +2,7 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Yêu Thương 💕</title>
     <style>
         * {
@@ -20,9 +20,9 @@
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            min-height: 100dvh;
+            display: grid; /* robust centering for all children */
+            place-items: center; /* center horizontally and vertically */
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             position: relative;
             padding: 20px;
@@ -105,8 +105,7 @@
 
         /* Container chính */
         .container {
-            width: 100%;
-            max-width: 500px;
+            width: min(92vw, 520px);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -118,7 +117,7 @@
         .avatar-screen {
             text-align: center;
             background: rgba(255, 255, 255, 0.95);
-            padding: 50px 30px;
+            padding: 40px 30px;
             border-radius: 30px;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
             width: 100%;
@@ -127,22 +126,22 @@
 
         .avatar-screen h1 {
             color: #e91e63;
-            font-size: 36px;
-            margin-bottom: 15px;
+            font-size: 32px;
+            margin-bottom: 12px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .avatar-screen p {
             color: #666;
-            font-size: 18px;
-            margin-bottom: 40px;
+            font-size: 16px;
+            margin-bottom: 30px;
         }
 
         .avatar-selection {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 40px;
+            gap: 30px;
             margin-bottom: 20px;
             flex-wrap: wrap;
         }
@@ -158,8 +157,8 @@
         }
 
         .avatar-circle {
-            width: 150px;
-            height: 150px;
+            width: 130px;
+            height: 130px;
             border-radius: 50%;
             border: 5px solid transparent;
             transition: all 0.3s ease;
@@ -194,8 +193,8 @@
         }
 
         .avatar-label {
-            margin-top: 15px;
-            font-size: 20px;
+            margin-top: 12px;
+            font-size: 18px;
             font-weight: bold;
             color: #333;
         }
@@ -209,9 +208,9 @@
         }
 
         .continue-btn {
-            margin-top: 30px;
-            padding: 18px 50px;
-            font-size: 20px;
+            margin-top: 25px;
+            padding: 16px 45px;
+            font-size: 18px;
             font-weight: bold;
             border: none;
             border-radius: 50px;
@@ -239,7 +238,7 @@
             display: none;
             text-align: center;
             background: rgba(255, 255, 255, 0.95);
-            padding: 50px 30px;
+            padding: 40px 30px;
             border-radius: 30px;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
             width: 100%;
@@ -284,10 +283,10 @@
         }
 
         .main-heart {
-            font-size: 80px;
+            font-size: 70px;
             animation: heartbeat 1.5s ease-in-out infinite;
             display: inline-block;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             filter: drop-shadow(0 10px 20px rgba(255, 0, 100, 0.3));
         }
 
@@ -305,15 +304,15 @@
 
         h1 {
             color: #e91e63;
-            font-size: 32px;
-            margin-bottom: 15px;
+            font-size: 28px;
+            margin-bottom: 12px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         p {
             color: #666;
-            font-size: 16px;
-            margin-bottom: 30px;
+            font-size: 15px;
+            margin-bottom: 25px;
             line-height: 1.6;
         }
 
@@ -326,8 +325,8 @@
         }
 
         button {
-            padding: 16px 40px;
-            font-size: 18px;
+            padding: 15px 35px;
+            font-size: 17px;
             font-weight: bold;
             border: none;
             border-radius: 50px;
@@ -501,188 +500,91 @@
             100% { transform: translate(var(--tx), var(--ty)) rotate(var(--rot)); opacity: 0; }
         }
 
-        /* Responsive cho mobile */
+        /* Responsive mượt cho mọi màn hình */
         @media (max-width: 768px) {
-            body {
-                padding: 15px;
-            }
-
-            .avatar-screen, .main-screen {
-                padding: 40px 25px;
-            }
-
-            .avatar-screen h1, h1 {
-                font-size: 28px;
-            }
-
-            .avatar-selection {
-                gap: 25px;
-            }
-
-            .avatar-circle {
-                width: 110px;
-                height: 110px;
-            }
-
-            .main-heart {
-                font-size: 70px;
-            }
-
-            p {
-                font-size: 15px;
-                margin-bottom: 25px;
-            }
-
-            button {
-                padding: 15px 35px;
-                font-size: 17px;
-            }
-
-            #customInput {
-                padding: 14px 18px;
-                font-size: 15px;
-            }
-
-            .btn-send {
-                padding: 14px 30px;
-                font-size: 17px;
-            }
-
-            .avatar-small {
-                width: 55px;
-                height: 55px;
-            }
+            .container { width: min(94vw, 520px); }
+            .avatar-screen, .main-screen { padding: 34px 24px; }
+            .avatar-circle { width: 110px; height: 110px; }
+            .main-heart { font-size: 70px; }
+            h1, .avatar-screen h1 { font-size: 28px; }
         }
 
         @media (max-width: 480px) {
-            body {
-                padding: 10px;
-            }
-
-            .avatar-screen, .main-screen {
-                padding: 30px 20px;
-            }
-
-            .avatar-circle {
-                width: 100px;
-                height: 100px;
-            }
-
-            .main-heart {
-                font-size: 60px;
-            }
-
-            .avatar-screen h1, h1 {
-                font-size: 26px;
-            }
-
-            p {
-                font-size: 14px;
-            }
-
-            button {
-                padding: 14px 30px;
-                font-size: 16px;
-            }
-
-            .btn-send {
-                padding: 14px 25px;
-                font-size: 16px;
-            }
-
-            .avatar-small {
-                width: 50px;
-                height: 50px;
-            }
-
-            .avatar-label {
-                font-size: 18px;
-            }
+            .container { width: 92vw; }
+            .avatar-screen, .main-screen { padding: 28px 20px; }
+            .avatar-circle { width: 96px; height: 96px; }
+            .main-heart { font-size: 60px; }
+            h1, .avatar-screen h1 { font-size: 26px; }
         }
 
         @media (max-width: 360px) {
-            .avatar-screen, .main-screen {
-                padding: 25px 15px;
-            }
-
-            .avatar-circle {
-                width: 90px;
-                height: 90px;
-            }
-
-            .avatar-selection {
-                gap: 20px;
-            }
-
-            h1, .avatar-screen h1 {
-                font-size: 24px;
-            }
-
-            button {
-                padding: 12px 25px;
-                font-size: 15px;
-            }
+            .container { width: 92vw; }
+            .avatar-screen, .main-screen { padding: 24px 16px; }
+            .avatar-circle { width: 86px; height: 86px; }
+            h1, .avatar-screen h1 { font-size: 24px; }
         }
     </style>
 </head>
 <body>
     <div class="hearts-background" id="heartsBackground"></div>
     
-    <!-- Màn hình chọn avatar -->
-    <div class="avatar-screen" id="avatarScreen">
-        <h1>Bạn Là Ai? 💕</h1>
-        <p>Hãy chọn avatar của bạn để tiếp tục</p>
-        
-        <div class="avatar-selection">
-            <div class="avatar-option boy" onclick="selectAvatar('boy')">
-                <div class="avatar-circle">
-                    <img src="anh.jpg" alt="Anh ấy" id="boyAvatarImg">
+    <div class="container">
+        <!-- Màn hình chọn avatar -->
+        <div class="avatar-screen" id="avatarScreen">
+            <h1>Bạn Là Ai? 💕</h1>
+            <p>Hãy chọn avatar của bạn để tiếp tục</p>
+            
+            <div class="avatar-selection">
+                <div class="avatar-option boy" onclick="selectAvatar('boy')">
+                    <div class="avatar-circle">
+                        <img src="anh.jpg" alt="Anh ấy" id="boyAvatarImg">
+                    </div>
+                    <div class="avatar-label">Wind</div>
                 </div>
-                <div class="avatar-label">Wind</div>
+                
+                <div class="avatar-option girl" onclick="selectAvatar('girl')">
+                    <div class="avatar-circle">
+                        <img src="em.jpg" alt="Giang xinh yêu" id="girlAvatarImg">
+                    </div>
+                    <div class="avatar-label">Babiboo</div>
+                </div>
             </div>
             
-            <div class="avatar-option girl" onclick="selectAvatar('girl')">
-                <div class="avatar-circle">
-                    <img src="em.jpg" alt="Giang xinh yêu" id="girlAvatarImg">
+            <button class="continue-btn" id="continueBtn" onclick="continueToMain()">
+                <span>Tiếp Tục 💖</span>
+            </button>
+        </div>
+        
+        <!-- Màn hình chính -->
+        <div class="main-screen" id="mainScreen">
+            <div class="effects-layer" id="effectsLayer"></div>
+            <div class="avatar-display">
+                <div class="avatar-small boy" id="avatarBoy">
+                    <img src="anh.jpg" alt="Anh ấy">
                 </div>
-                <div class="avatar-label">Babiboo</div>
+                <div class="main-heart">💖</div>
+                <div class="avatar-small girl" id="avatarGirl">
+                    <img src="em.jpg" alt="Em ấy">
+                </div>
             </div>
-        </div>
-        
-        <button class="continue-btn" id="continueBtn" onclick="continueToMain()">
-            <span>Tiếp Tục 💖</span>
-        </button>
-    </div>
-    
-    <!-- Màn hình chính -->
-    <div class="main-screen" id="mainScreen">
-        <div class="effects-layer" id="effectsLayer"></div>
-        <div class="avatar-display">
-            <div class="avatar-small boy" id="avatarBoy">
-                <img src="anh.jpg" alt="Anh ấy">
+            
+            <h1>Tình Yêu Của Chúng Ta</h1>
+            <p id="subtitleText">Hãy cho anh biết cảm xúc của em nhé! 💕</p>
+            
+            <div class="buttons" id="actionButtons">
+                <!-- Buttons sẽ được tạo động bằng JavaScript -->
             </div>
-            <div class="main-heart">💖</div>
-            <div class="avatar-small girl" id="avatarGirl">
-                <img src="em.jpg" alt="Em ấy">
-            </div>
-        </div>
-        
-        <h1>Tình Yêu Của Chúng Ta</h1>
-        <p id="subtitleText">Hãy cho anh biết cảm xúc của em nhé! 💕</p>
-        
-        <div class="buttons" id="actionButtons">
-            <!-- Buttons sẽ được tạo động bằng JavaScript -->
-        </div>
 
-        <div class="custom-message">
-            <div class="input-wrapper">
-                <input type="text" id="customInput" placeholder="Nhắn gửi yêu thương... 💕" maxlength="200">
-                <button class="btn-send" onclick="sendCustomMessage()">
-                    <span>Gửi 💌</span>
-                </button>
-            </div>
-            <div class="char-counter">
-                <span id="charCount">0</span>/200 ký tự
+            <div class="custom-message">
+                <div class="input-wrapper">
+                    <input type="text" id="customInput" placeholder="Nhắn gửi yêu thương... 💕" maxlength="200">
+                    <button class="btn-send" onclick="sendCustomMessage()">
+                        <span>Gửi 💌</span>
+                    </button>
+                </div>
+                <div class="char-counter">
+                    <span id="charCount">0</span>/200 ký tự
+                </div>
             </div>
         </div>
     </div>
@@ -822,11 +724,10 @@
             }, 1000);
         }
 
-        document.querySelectorAll('button').forEach(button => {
-            button.addEventListener('click', function(e) {
-                const rect = this.getBoundingClientRect();
-                const x = rect.left + rect.width / 2;
-                const y = rect.top + rect.height / 2;
+        document.addEventListener('click', function(e) {
+            if (e.target.tagName === 'BUTTON' || e.target.closest('button')) {
+                const x = e.clientX;
+                const y = e.clientY;
                 
                 for (let i = 0; i < 5; i++) {
                     setTimeout(() => {
@@ -836,7 +737,7 @@
                         );
                     }, i * 100);
                 }
-            });
+            }
         });
 
         // Hàm gửi tin nhắn tới Telegram
@@ -898,15 +799,12 @@
                 const data = await response.json();
                 
                 if (data.ok) {
-                    // showNotification('Tin nhắn đã được gửi đến Telegram thành công!', 'success');
                     burstHearts();
                 } else {
                     console.error('Telegram error:', data);
-                    // showNotification('Có lỗi xảy ra. Vui lòng kiểm tra Bot Token và Chat ID!', 'error');
                 }
             } catch (error) {
                 console.error('Error:', error);
-                // showNotification('Có lỗi xảy ra. Vui lòng kiểm tra Bot Token và Chat ID!', 'error');
             }
         }
 
@@ -943,17 +841,14 @@
                 const data = await response.json();
                 
                 if (data.ok) {
-                    // showNotification('Tin nhắn đã được gửi đến Telegram thành công!', 'success');
                     input.value = '';
                     updateCharCount();
                     burstHearts();
                 } else {
                     console.error('Telegram error:', data);
-                    // showNotification('Có lỗi xảy ra. Vui lòng kiểm tra Bot Token và Chat ID!', 'error');
                 }
             } catch (error) {
                 console.error('Error:', error);
-                // showNotification('Có lỗi xảy ra. Vui lòng kiểm tra Bot Token và Chat ID!', 'error');
             }
         }
 
@@ -990,27 +885,23 @@
                 heart.className = 'flying-heart';
                 heart.textContent = emojis[Math.floor(Math.random() * emojis.length)];
 
-                // đặt vị trí bắt đầu ở trung tâm khối
                 heart.style.left = centerX + 'px';
                 heart.style.top = centerY + 'px';
 
-                // ngẫu nhiên hướng bay
                 const angle = (Math.PI * 2 * i) / HEART_COUNT + (Math.random() * 0.6 - 0.3);
                 const distance = 120 + Math.random() * 80;
                 const tx = Math.cos(angle) * distance;
-                const ty = Math.sin(angle) * -distance; // bay hướng lên là số âm
+                const ty = Math.sin(angle) * -distance;
                 const rot = (Math.random() * 120 - 60) + 'deg';
 
                 heart.style.setProperty('--tx', tx + 'px');
                 heart.style.setProperty('--ty', ty + 'px');
                 heart.style.setProperty('--rot', rot);
 
-                // cỡ trái tim ngẫu nhiên
                 heart.style.fontSize = (22 + Math.random() * 14) + 'px';
 
                 container.appendChild(heart);
 
-                // dọn dẹp sau khi kết thúc
                 setTimeout(() => heart.remove(), 2000);
             }
         }
