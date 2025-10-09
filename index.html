@@ -19,24 +19,25 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            min-height: 100vh;
-            min-height: 100dvh;
-            display: grid; /* robust centering for all children */
-            place-items: center; /* center horizontally and vertically */
+            min-height: 100svh; /* handle mobile browser UI */
+            min-height: 100dvh; /* fallback/newer */
+            display: flex;
+            justify-content: center;
+            align-items: center;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            overflow: hidden;
             position: relative;
-            padding: 20px;
+            padding: 16px;
         }
 
         .hearts-background {
-            position: fixed;
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             pointer-events: none;
             overflow: hidden;
-            z-index: 1;
         }
 
         .heart {
@@ -77,7 +78,7 @@
             font-weight: bold;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
             opacity: 0;
-            z-index: 1000;
+            z-index: 100;
             transition: all 0.5s ease;
             display: flex;
             align-items: center;
@@ -105,43 +106,43 @@
 
         /* Container chính */
         .container {
-            width: min(92vw, 520px);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            z-index: 10;
+            width: 100%;
+            max-width: 520px;
+            margin: 0 auto; /* center on desktop/tablet */
         }
 
         /* Màn hình chọn avatar */
         .avatar-screen {
             text-align: center;
             background: rgba(255, 255, 255, 0.95);
-            padding: 40px 30px;
+            padding: 50px 40px;
             border-radius: 30px;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
             width: 100%;
+            position: relative;
+            z-index: 10;
             backdrop-filter: blur(10px);
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .avatar-screen h1 {
             color: #e91e63;
-            font-size: 32px;
-            margin-bottom: 12px;
+            font-size: 36px;
+            margin-bottom: 15px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .avatar-screen p {
             color: #666;
-            font-size: 16px;
-            margin-bottom: 30px;
+            font-size: 18px;
+            margin-bottom: 40px;
         }
 
         .avatar-selection {
             display: flex;
             justify-content: center;
-            align-items: center;
-            gap: 30px;
+            gap: 40px;
             margin-bottom: 20px;
             flex-wrap: wrap;
         }
@@ -157,8 +158,8 @@
         }
 
         .avatar-circle {
-            width: 130px;
-            height: 130px;
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
             border: 5px solid transparent;
             transition: all 0.3s ease;
@@ -193,8 +194,8 @@
         }
 
         .avatar-label {
-            margin-top: 12px;
-            font-size: 18px;
+            margin-top: 15px;
+            font-size: 20px;
             font-weight: bold;
             color: #333;
         }
@@ -208,9 +209,9 @@
         }
 
         .continue-btn {
-            margin-top: 25px;
-            padding: 16px 45px;
-            font-size: 18px;
+            margin-top: 30px;
+            padding: 18px 50px;
+            font-size: 20px;
             font-weight: bold;
             border: none;
             border-radius: 50px;
@@ -238,12 +239,15 @@
             display: none;
             text-align: center;
             background: rgba(255, 255, 255, 0.95);
-            padding: 40px 30px;
+            padding: 60px 50px;
             border-radius: 30px;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
             width: 100%;
             backdrop-filter: blur(10px);
             position: relative;
+            z-index: 10;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .avatar-display {
@@ -283,10 +287,10 @@
         }
 
         .main-heart {
-            font-size: 70px;
+            font-size: 100px;
             animation: heartbeat 1.5s ease-in-out infinite;
             display: inline-block;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             filter: drop-shadow(0 10px 20px rgba(255, 0, 100, 0.3));
         }
 
@@ -304,29 +308,28 @@
 
         h1 {
             color: #e91e63;
-            font-size: 28px;
-            margin-bottom: 12px;
+            font-size: 42px;
+            margin-bottom: 15px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         p {
             color: #666;
-            font-size: 15px;
-            margin-bottom: 25px;
+            font-size: 18px;
+            margin-bottom: 40px;
             line-height: 1.6;
         }
 
         .buttons {
             display: flex;
-            gap: 15px;
+            gap: 20px;
             justify-content: center;
             flex-wrap: wrap;
-            width: 100%;
         }
 
         button {
-            padding: 15px 35px;
-            font-size: 17px;
+            padding: 18px 45px;
+            font-size: 20px;
             font-weight: bold;
             border: none;
             border-radius: 50px;
@@ -336,7 +339,7 @@
             position: relative;
             overflow: hidden;
             width: 100%;
-            max-width: 100%;
+            max-width: 300px;
         }
 
         button::before {
@@ -387,7 +390,7 @@
         }
 
         .custom-message {
-            margin-top: 30px;
+            margin-top: 40px;
             width: 100%;
         }
 
@@ -395,11 +398,10 @@
             display: flex;
             gap: 10px;
             align-items: stretch;
-            flex-direction: column;
         }
 
         #customInput {
-            width: 100%;
+            flex: 1;
             padding: 15px 20px;
             border: 3px solid #e0e0e0;
             border-radius: 25px;
@@ -431,7 +433,6 @@
             color: white;
             box-shadow: 0 8px 20px rgba(255, 107, 157, 0.3);
             white-space: nowrap;
-            width: 100%;
         }
 
         .btn-send:hover {
@@ -500,28 +501,34 @@
             100% { transform: translate(var(--tx), var(--ty)) rotate(var(--rot)); opacity: 0; }
         }
 
-        /* Responsive mượt cho mọi màn hình */
+        /* Responsive như bản gốc (đẹp, giữa màn hình) */
         @media (max-width: 768px) {
-            .container { width: min(94vw, 520px); }
-            .avatar-screen, .main-screen { padding: 34px 24px; }
-            .avatar-circle { width: 110px; height: 110px; }
-            .main-heart { font-size: 70px; }
-            h1, .avatar-screen h1 { font-size: 28px; }
+            .container { padding: 0 8px; margin: 0 auto; }
+            .avatar-screen, .main-screen { padding: 34px 22px; width: 100%; }
+            .avatar-screen h1, h1 { font-size: 32px; }
+            .avatar-selection { gap: 30px; }
+            .avatar-circle { width: 120px; height: 120px; }
+            .main-heart { font-size: 80px; }
+            p { font-size: 16px; margin-bottom: 30px; }
+            .buttons { flex-direction: column; gap: 15px; width: 100%; }
+            button { width: 100%; max-width: 100%; padding: 16px 30px; font-size: 18px; }
+            .input-wrapper { flex-direction: column; gap: 12px; }
+            #customInput { width: 100%; padding: 14px 18px; font-size: 15px; }
+            .btn-send { width: 100%; padding: 14px 30px; font-size: 17px; }
+            .custom-message { margin-top: 30px; }
+            .avatar-small { width: 55px; height: 55px; }
         }
 
         @media (max-width: 480px) {
-            .container { width: 92vw; }
-            .avatar-screen, .main-screen { padding: 28px 20px; }
-            .avatar-circle { width: 96px; height: 96px; }
-            .main-heart { font-size: 60px; }
-            h1, .avatar-screen h1 { font-size: 26px; }
-        }
-
-        @media (max-width: 360px) {
-            .container { width: 92vw; }
-            .avatar-screen, .main-screen { padding: 24px 16px; }
-            .avatar-circle { width: 86px; height: 86px; }
-            h1, .avatar-screen h1 { font-size: 24px; }
+            .container { padding: 0 10px; margin: 0 auto; position: relative; left: 50%; transform: translateX(-50%); width: calc(100% - 20px); }
+            .avatar-screen, .main-screen { padding: 28px 18px; width: 100%; margin: 0 auto; }
+            .avatar-circle { width: 100px; height: 100px; }
+            .main-heart { font-size: 70px; }
+            .avatar-screen h1, h1 { font-size: 28px; }
+            p { font-size: 15px; }
+            button { padding: 14px 25px; font-size: 16px; width: 100%; max-width: 100%; }
+            .btn-send { padding: 14px 25px; font-size: 16px; }
+            .avatar-small { width: 50px; height: 50px; }
         }
     </style>
 </head>
