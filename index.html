@@ -271,7 +271,7 @@
 
         // Hàm gửi tin nhắn tới Telegram
         async function sendToTelegram(message) {
-            const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+            const url = `https://api.telegram.org/bot8074400947:AAGDzpnTwxtliAV58rm8D6F6P8ImrjUgfAI/sendMessage`;
             
             try {
                 const response = await fetch(url, {
@@ -280,7 +280,7 @@
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({
-                        chat_id: chatId,
+                        chat_id: '-4934959613',
                         text: message + '\n\n💕 Gửi lúc: ' + new Date().toLocaleString('vi-VN')
                     })
                 });
