@@ -238,6 +238,89 @@
             font-weight: bold;
         }
 
+        /* Responsive cho mobile */
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 25px;
+                width: 95%;
+            }
+
+            .main-heart {
+                font-size: 80px;
+            }
+
+            h1 {
+                font-size: 32px;
+                margin-bottom: 10px;
+            }
+
+            p {
+                font-size: 16px;
+                margin-bottom: 30px;
+            }
+
+            .buttons {
+                flex-direction: column;
+                gap: 15px;
+                width: 100%;
+            }
+
+            button {
+                width: 100%;
+                padding: 16px 30px;
+                font-size: 18px;
+            }
+
+            .input-wrapper {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            #customInput {
+                width: 100%;
+                padding: 14px 18px;
+                font-size: 15px;
+            }
+
+            .btn-send {
+                width: 100%;
+                padding: 14px 30px;
+                font-size: 17px;
+            }
+
+            .custom-message {
+                margin-top: 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 30px 20px;
+            }
+
+            .main-heart {
+                font-size: 70px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            p {
+                font-size: 15px;
+            }
+
+            button {
+                padding: 14px 25px;
+                font-size: 16px;
+            }
+
+            .btn-send {
+                padding: 14px 25px;
+                font-size: 16px;
+            }
+        }
+
         .sparkle {
             position: absolute;
             pointer-events: none;
