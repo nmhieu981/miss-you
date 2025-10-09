@@ -57,7 +57,170 @@
             }
         }
 
-        .container {
+        /* Notification styles */
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            padding: 15px 30px;
+            border-radius: 25px;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            z-index: 100;
+            transition: all 0.5s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            max-width: 90%;
+            text-align: center;
+        }
+
+        .notification.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        .notification.success {
+            background: linear-gradient(135deg, #4caf50 0%, #81c784 100%);
+        }
+
+        .notification.error {
+            background: linear-gradient(135deg, #f44336 0%, #e57373 100%);
+        }
+
+        .notification .emoji {
+            font-size: 20px;
+        }
+
+        /* Màn hình chọn avatar */
+        .avatar-screen {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 50px 40px;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+            z-index: 10;
+            backdrop-filter: blur(10px);
+        }
+
+        .avatar-screen h1 {
+            color: #e91e63;
+            font-size: 36px;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .avatar-screen p {
+            color: #666;
+            font-size: 18px;
+            margin-bottom: 40px;
+        }
+
+        .avatar-selection {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .avatar-option {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .avatar-option:hover {
+            transform: translateY(-10px);
+        }
+
+        .avatar-circle {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid transparent;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+        }
+
+        .avatar-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .avatar-option.boy .avatar-circle {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .avatar-option.girl .avatar-circle {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .avatar-option.selected .avatar-circle {
+            border-color: #ffd700;
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
+            transform: scale(1.1);
+        }
+
+        .avatar-label {
+            margin-top: 15px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .avatar-option.boy .avatar-label {
+            color: #4facfe;
+        }
+
+        .avatar-option.girl .avatar-label {
+            color: #f5576c;
+        }
+
+        .continue-btn {
+            margin-top: 30px;
+            padding: 18px 50px;
+            font-size: 20px;
+            font-weight: bold;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        .continue-btn.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .continue-btn.active:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Màn hình chính */
+        .main-screen {
+            display: none;
             text-align: center;
             background: rgba(255, 255, 255, 0.95);
             padding: 60px 50px;
@@ -68,6 +231,42 @@
             position: relative;
             z-index: 10;
             backdrop-filter: blur(10px);
+        }
+
+        .avatar-display {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .avatar-small {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            padding: 0;
+        }
+
+        .avatar-small img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .avatar-small.boy {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .avatar-small.girl {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
         }
 
         .main-heart {
@@ -122,6 +321,8 @@
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
             position: relative;
             overflow: hidden;
+            width: 100%;
+            max-width: 300px;
         }
 
         button::before {
@@ -238,20 +439,73 @@
             font-weight: bold;
         }
 
+        .sparkle {
+            position: absolute;
+            pointer-events: none;
+            animation: sparkle 1s ease-out forwards;
+        }
+
+        @keyframes sparkle {
+            0% {
+                transform: scale(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1.5) rotate(180deg);
+                opacity: 0;
+            }
+        }
+
+        /* Hiệu ứng trái tim khi gửi thành công */
+        .effects-layer {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .flying-heart {
+            position: absolute;
+            font-size: 24px;
+            will-change: transform, opacity;
+            animation: heartPop 250ms ease-out, heartFly 1.8s ease-in forwards;
+            filter: drop-shadow(0 6px 14px rgba(233, 30, 99, 0.35));
+        }
+
+        @keyframes heartPop {
+            0% { transform: scale(0); opacity: 0; }
+            60% { transform: scale(1.15); opacity: 1; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes heartFly {
+            0% { transform: translate(0, 0) rotate(0deg); opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translate(var(--tx), var(--ty)) rotate(var(--rot)); opacity: 0; }
+        }
+
         /* Responsive cho mobile */
         @media (max-width: 768px) {
-            .container {
+            .avatar-screen, .main-screen {
                 padding: 40px 25px;
                 width: 95%;
             }
 
-            .main-heart {
-                font-size: 80px;
+            .avatar-screen h1, h1 {
+                font-size: 32px;
             }
 
-            h1 {
-                font-size: 32px;
-                margin-bottom: 10px;
+            .avatar-selection {
+                gap: 30px;
+            }
+
+            .avatar-circle {
+                width: 120px;
+                height: 120px;
+            }
+
+            .main-heart {
+                font-size: 80px;
             }
 
             p {
@@ -291,18 +545,28 @@
             .custom-message {
                 margin-top: 30px;
             }
+
+            .avatar-small {
+                width: 55px;
+                height: 55px;
+            }
         }
 
         @media (max-width: 480px) {
-            .container {
+            .avatar-screen, .main-screen {
                 padding: 30px 20px;
+            }
+
+            .avatar-circle {
+                width: 100px;
+                height: 100px;
             }
 
             .main-heart {
                 font-size: 70px;
             }
 
-            h1 {
+            .avatar-screen h1, h1 {
                 font-size: 28px;
             }
 
@@ -319,48 +583,66 @@
                 padding: 14px 25px;
                 font-size: 16px;
             }
-        }
 
-        .sparkle {
-            position: absolute;
-            pointer-events: none;
-            animation: sparkle 1s ease-out forwards;
-        }
-
-        @keyframes sparkle {
-            0% {
-                transform: scale(0) rotate(0deg);
-                opacity: 1;
-            }
-            100% {
-                transform: scale(1.5) rotate(180deg);
-                opacity: 0;
+            .avatar-small {
+                width: 50px;
+                height: 50px;
             }
         }
-
-
     </style>
 </head>
 <body>
     <div class="hearts-background" id="heartsBackground"></div>
     
-    <div class="container">
-        <div class="main-heart">💖</div>
-        <h1>Tình Yêu Của Chúng Ta</h1>
-        <p>Hãy cho anh biết cảm xúc của em nhé! 💕</p>
+    <!-- Màn hình chọn avatar -->
+    <div class="avatar-screen" id="avatarScreen">
+        <h1>Bạn Là Ai? 💕</h1>
+        <p>Hãy chọn avatar của bạn để tiếp tục</p>
         
-        <div class="buttons">
-            <button class="btn-love-em" onclick="sendMessage('Yêu em ❤️')">
-                <span>💝 Yêu Em</span>
-            </button>
-            <button class="btn-love-anh" onclick="sendMessage('Yêu anh 💙')">
-                <span>💙 Yêu Anh</span>
-            </button>
+        <div class="avatar-selection">
+            <div class="avatar-option boy" onclick="selectAvatar('boy')">
+                <div class="avatar-circle">
+                    <img src=".\anh.jpg" alt="Anh ấy" id="boyAvatarImg">
+                </div>
+                <div class="avatar-label">Wind</div>
+            </div>
+            
+            <div class="avatar-option girl" onclick="selectAvatar('girl')">
+                <div class="avatar-circle">
+                    <img src=".\em.jpg" alt="Giang xinh yêu" id="girlAvatarImg">
+                </div>
+                <div class="avatar-label">Babiboo</div>
+            </div>
+        </div>
+        
+        <button class="continue-btn" id="continueBtn" onclick="continueToMain()">
+            <span>Tiếp Tục 💖</span>
+        </button>
+    </div>
+    
+    <!-- Màn hình chính -->
+    <div class="main-screen" id="mainScreen">
+        <div class="effects-layer" id="effectsLayer"></div>
+        <div class="avatar-display">
+            <div class="avatar-small boy" id="avatarBoy">
+                <img src=".\anh.jpg" alt="Anh ấy">
+            </div>
+            <div class="main-heart">💖</div>
+            <div class="avatar-small girl" id="avatarGirl">
+                <img src=".\em.jpg" alt="Em ấy">
+            </div>
+        </div>
+        
+        <h1>Tình Yêu Của Chúng Ta</h1>
+        <p id="subtitleText">Hãy cho anh biết cảm xúc của em nhé! 💕</p>
+        
+        <div class="buttons" id="actionButtons">
+            <!-- Buttons sẽ được tạo động bằng JavaScript -->
         </div>
 
         <div class="custom-message">
             <div class="input-wrapper">
-                <input type="text" id="customInput" placeholder="Nhập lời nhắn của bạn... 💕" maxlength="200">
+                <input type="text" id="customInput" placeholder="Nhắn gửi yêu thương... 💕" maxlength="200">
                 <button class="btn-send" onclick="sendCustomMessage()">
                     <span>Gửi 💌</span>
                 </button>
@@ -369,11 +651,42 @@
                 <span id="charCount">0</span>/200 ký tự
             </div>
         </div>
-
-
     </div>
 
     <script>
+        let selectedAvatar = null;
+
+        // Cấu hình Telegram cho Nam
+        const BOT_CONFIG_BOY = {
+            BOT_TOKEN: '8346153688:AAFK3wJGOkRrhB4w9xKaKS2-kn24V0cHbWo',
+            CHAT_ID: '-4934959613'
+        };
+
+        // Cấu hình Telegram cho Nữ
+        const BOT_CONFIG_GIRL = {
+            BOT_TOKEN: '8074400947:AAGDzpnTwxtliAV58rm8D6F6P8ImrjUgfAI',
+            CHAT_ID: '-4934959613'
+        };
+
+        // Hàm hiển thị thông báo
+        function showNotification(message, type = 'success') {
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.innerHTML = `<span class="emoji">${type === 'success' ? '💖' : '❌'}</span> ${message}`;
+            document.body.appendChild(notification);
+
+            setTimeout(() => {
+                notification.classList.add('show');
+            }, 100);
+
+            setTimeout(() => {
+                notification.classList.remove('show');
+                setTimeout(() => {
+                    notification.remove();
+                }, 500);
+            }, 3000);
+        }
+
         // Tạo trái tim bay
         function createHeart() {
             const heart = document.createElement('div');
@@ -392,6 +705,71 @@
         }
 
         setInterval(createHeart, 300);
+
+        // Chọn avatar
+        function selectAvatar(type) {
+            selectedAvatar = type;
+            
+            // Bỏ selected tất cả
+            document.querySelectorAll('.avatar-option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            
+            // Thêm selected cho avatar được chọn
+            document.querySelector('.avatar-option.' + type).classList.add('selected');
+            
+            // Kích hoạt nút continue
+            document.getElementById('continueBtn').classList.add('active');
+        }
+
+        // Tiếp tục tới màn hình chính
+        function continueToMain() {
+            if (!selectedAvatar) return;
+            
+            document.getElementById('avatarScreen').style.display = 'none';
+            document.getElementById('mainScreen').style.display = 'block';
+            
+            // Tạo button động dựa trên avatar được chọn
+            createActionButton();
+            
+            // Thêm hiệu ứng highlight cho avatar được chọn
+            if (selectedAvatar === 'boy') {
+                document.getElementById('avatarBoy').style.transform = 'scale(1.2)';
+                document.getElementById('avatarBoy').style.boxShadow = '0 0 20px rgba(79, 172, 254, 0.8)';
+            } else {
+                document.getElementById('avatarGirl').style.transform = 'scale(1.2)';
+                document.getElementById('avatarGirl').style.boxShadow = '0 0 20px rgba(245, 87, 108, 0.8)';
+            }
+
+            // Cập nhật câu mô tả theo lựa chọn
+            const subtitle = document.getElementById('subtitleText');
+            if (subtitle) {
+                subtitle.innerHTML = selectedAvatar === 'boy'
+                    ? 'Hãy cho em biết cảm xúc của anh nhé! 💕'
+                    : 'Hãy cho anh biết cảm xúc của em nhé! 💕';
+            }
+        }
+
+        // Tạo button hành động dựa trên avatar
+        function createActionButton() {
+            const buttonsContainer = document.getElementById('actionButtons');
+            
+            if (selectedAvatar === 'boy') {
+                // Nam thì hiển thị button "Yêu Em"
+                buttonsContainer.innerHTML = `
+                    <button class="btn-love-em" onclick="sendMessage('Yêu em 💗', 'girl')">
+                        <span>💗 Yêu Em</span>
+                    </button>
+                `;
+            } else {
+                // Nữ thì hiển thị button "Yêu Anh"
+                buttonsContainer.innerHTML = `
+                    <button class="btn-love-anh" onclick="sendMessage('Yêu anh 💙', 'boy')">
+                        <span>💙 Yêu Anh</span>
+                    </button>
+                `;
+            }
+        }
 
         // Tạo hiệu ứng sparkle khi click
         function createSparkle(x, y) {
@@ -427,13 +805,14 @@
             });
         });
 
-        // Cấu hình Telegram - Thay bằng thông tin của bạn
-        const BOT_TOKEN = '8074400947:AAGDzpnTwxtliAV58rm8D6F6P8ImrjUgfAI';
-        const CHAT_ID = '-4934959613';
-
         // Hàm gửi tin nhắn tới Telegram
         async function sendToTelegram(message) {
-            const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+            // Lấy config theo avatar được chọn
+            const config = selectedAvatar === 'boy' ? BOT_CONFIG_BOY : BOT_CONFIG_GIRL;
+            const url = `https://api.telegram.org/bot${config.BOT_TOKEN}/sendMessage`;
+            
+            const senderInfo = selectedAvatar === 'boy' ? '👦 Wind' : '👧 Babiboo';
+            const fullMessage = `${senderInfo}:\n${message}\n\n💕💕💕 `;
             
             try {
                 const response = await fetch(url, {
@@ -442,8 +821,8 @@
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({
-                        chat_id: CHAT_ID,
-                        text: message + '\n💕💕💕'
+                        chat_id: config.CHAT_ID,
+                        text: fullMessage
                     })
                 });
                 
@@ -462,13 +841,38 @@
         }
 
         // Hàm xử lý khi nhấn button
-        async function sendMessage(type) {
-            const success = await sendToTelegram(type);
+        async function sendMessage(text, recipient) {
+            // Gửi tới bot của người nhận
+            const config = recipient === 'boy' ? BOT_CONFIG_BOY : BOT_CONFIG_GIRL;
+            const url = `https://api.telegram.org/bot${config.BOT_TOKEN}/sendMessage`;
             
-            if (success) {
-                alert('💖 Tin nhắn đã được gửi đến Telegram thành công!');
-            } else {
-                alert('❌ Có lỗi xảy ra. Vui lòng kiểm tra Bot Token và Chat ID!');
+            const senderInfo = selectedAvatar === 'boy' ? '👦 Wind' : '👧 Babiboo';
+            const fullMessage = `${senderInfo}:\n${text}\n\n💕💕💕`;
+            
+            try {
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        chat_id: config.CHAT_ID,
+                        text: fullMessage
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (data.ok) {
+                    // showNotification('Tin nhắn đã được gửi đến Telegram thành công!', 'success');
+                    burstHearts();
+                } else {
+                    console.error('Telegram error:', data);
+                    // showNotification('Có lỗi xảy ra. Vui lòng kiểm tra Bot Token và Chat ID!', 'error');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                // showNotification('Có lỗi xảy ra. Vui lòng kiểm tra Bot Token và Chat ID!', 'error');
             }
         }
 
@@ -478,18 +882,44 @@
             const message = input.value.trim();
             
             if (!message) {
-                alert('⚠️ Vui lòng nhập tin nhắn trước khi gửi!');
+                showNotification('Vui lòng nhập tin nhắn trước khi gửi!', 'error');
                 return;
             }
             
-            const success = await sendToTelegram(message);
+            // Gửi tới bot của người còn lại
+            const recipient = selectedAvatar === 'boy' ? 'girl' : 'boy';
+            const config = recipient === 'boy' ? BOT_CONFIG_BOY : BOT_CONFIG_GIRL;
+            const url = `https://api.telegram.org/bot${config.BOT_TOKEN}/sendMessage`;
             
-            if (success) {
-                alert('💖 Tin nhắn đã được gửi đến Telegram thành công!');
-                input.value = '';
-                updateCharCount();
-            } else {
-                alert('❌ Có lỗi xảy ra. Vui lòng kiểm tra Bot Token và Chat ID!');
+            const senderInfo = selectedAvatar === 'boy' ? '👦 Wind' : '👧 Babiboo';
+            const fullMessage = `${senderInfo} gửi:\n${message}\n\n💕💕💕`;
+            
+            try {
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        chat_id: config.CHAT_ID,
+                        text: fullMessage
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (data.ok) {
+                    // showNotification('Tin nhắn đã được gửi đến Telegram thành công!', 'success');
+                    input.value = '';
+                    updateCharCount();
+                    burstHearts();
+                } else {
+                    console.error('Telegram error:', data);
+                    // showNotification('Có lỗi xảy ra. Vui lòng kiểm tra Bot Token và Chat ID!', 'error');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                // showNotification('Có lỗi xảy ra. Vui lòng kiểm tra Bot Token và Chat ID!', 'error');
             }
         }
 
@@ -509,6 +939,47 @@
                 sendCustomMessage();
             }
         });
+
+        // Nổ trái tim trong thẻ main-screen khi gửi thành công
+        function burstHearts() {
+            const container = document.getElementById('effectsLayer');
+            if (!container) return;
+
+            const rect = container.getBoundingClientRect();
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const emojis = ['❤️','💕','💖','💗','💓','💞'];
+
+            const HEART_COUNT = 16;
+            for (let i = 0; i < HEART_COUNT; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'flying-heart';
+                heart.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+
+                // đặt vị trí bắt đầu ở trung tâm khối
+                heart.style.left = centerX + 'px';
+                heart.style.top = centerY + 'px';
+
+                // ngẫu nhiên hướng bay
+                const angle = (Math.PI * 2 * i) / HEART_COUNT + (Math.random() * 0.6 - 0.3);
+                const distance = 120 + Math.random() * 80;
+                const tx = Math.cos(angle) * distance;
+                const ty = Math.sin(angle) * -distance; // bay hướng lên là số âm
+                const rot = (Math.random() * 120 - 60) + 'deg';
+
+                heart.style.setProperty('--tx', tx + 'px');
+                heart.style.setProperty('--ty', ty + 'px');
+                heart.style.setProperty('--rot', rot);
+
+                // cỡ trái tim ngẫu nhiên
+                heart.style.fontSize = (22 + Math.random() * 14) + 'px';
+
+                container.appendChild(heart);
+
+                // dọn dẹp sau khi kết thúc
+                setTimeout(() => heart.remove(), 2000);
+            }
+        }
     </script>
 </body>
 </html>
