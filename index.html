@@ -530,12 +530,36 @@
             .btn-send { padding: 14px 25px; font-size: 16px; }
             .avatar-small { width: 50px; height: 50px; }
         }
+		.falling-item {
+    position: absolute;
+    top: -50px;
+    pointer-events: none;
+    user-select: none;
+    animation: fall linear forwards;
+    z-index: 2;
+}
+
+@keyframes fall {
+    from { transform: translateY(-50px) rotate(0deg); opacity: 1; }
+    to { transform: translateY(110vh) rotate(360deg); opacity: 0.8; }
+}
+
     </style>
 </head>
 <body>
     <div class="hearts-background" id="heartsBackground"></div>
     
     <div class="container">
+	<div style="margin: 20px 0; text-align:center;">
+		<select id="effectSelector" onchange="changeEffect()" 
+			style="padding:12px 20px; border-radius:20px; font-size:16px; border:2px solid #fff; background:#ffffffaa;">
+			<option value="none">💤 Không hiệu ứng</option>
+			<option value="snow">❄️ Tuyết</option>
+			<option value="candy">🍬 Kẹo</option>
+			<option value="cookie">🍪 Bánh</option>
+		</select>
+	</div>
+
         <!-- Màn hình chọn avatar -->
         <div class="avatar-screen" id="avatarScreen">
             <h1>Bạn Là Ai? 💕</h1>
@@ -597,6 +621,39 @@
     </div>
 
     <script>
+		let effectInterval = null;
+
+		function changeEffect() {
+			const effect = document.getElementById('effectSelector').value;
+
+			if (effectInterval) {
+				clearInterval(effectInterval);
+				effectInterval = null;
+			}
+
+			if (effect === "none") return;
+
+			let iconList = [];
+			if (effect === "snow") iconList = ["❄️","❅","❆"];
+			if (effect === "candy") iconList = ["🍬","🍭","🍫"];
+			if (effect === "cookie") iconList = ["🍪","🥠","🧁"];
+
+			effectInterval = setInterval(() => createFallingItem(iconList), 300);
+		}
+
+		function createFallingItem(list) {
+			const item = document.createElement('div');
+			item.className = "falling-item";
+			item.textContent = list[Math.floor(Math.random() * list.length)];
+			item.style.left = Math.random() * 100 + "vw";
+			item.style.fontSize = (20 + Math.random() * 20) + "px";
+			item.style.animationDuration = (3 + Math.random() * 4) + "s";
+
+			document.body.appendChild(item);
+
+			setTimeout(() => item.remove(), 8000);
+		}
+
         let selectedAvatar = null;
 
         // Cấu hình Telegram cho Nam
