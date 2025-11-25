@@ -647,6 +647,7 @@
 			item.textContent = list[Math.floor(Math.random() * list.length)];
 			item.style.left = Math.random() * 100 + "vw";
 			item.style.fontSize = (20 + Math.random() * 20) + "px";
+			item.style.filter = "drop-shadow(0 0 6px rgba(255,255,255,0.9))";
 			item.style.animationDuration = (3 + Math.random() * 4) + "s";
 
 			document.body.appendChild(item);
